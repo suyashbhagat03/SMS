@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Final Doc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style_landing.css">
+</head>
+
+<body>
+
+    <h1>Welcome Player<div id="data" style="display: inline-block"></div>
+    </h1>
+    <div class="navbar">
+        <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+        <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a href="../index.html"><i class="fa fa-fw fa-user"></i> LogOut</a>
+    </div>
+    <br>
+    <br>
+    <form action="landing.html" method="get">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Messi">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Sports</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Football">
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Size</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+        </div>
+        <button type = "submit" class="btn btn-success">Submit</button>
+
+    </form>
+    
+
+    <script>
+        function process() {
+            var parameters = location.search.substring(1).split("&");
+            var pass = location.search.substring(2).split("&");
+            var temp = parameters[0].split("=");
+            var temp_pass = parameters[1].split("=");
+            var email = unescape(temp[1]);
+            var password = unescape(temp_pass[1]);
+            if (email == 'admin' && password == '12345'){
+                document.getElementById("data").innerHTML = 'Admin';
+                document.getElementById("admins").style.display = "inline";
+                document.getElementById("players").style.display = "none";
+            } 
+            else if(email == 'sportsco' && password == '56789'){
+                document.getElementById("data").innerHTML = 'Sports Coordinator';
+                document.getElementById("admins").style.display = "inline";
+                document.getElementById("players").style.display = "none";
+            } 
+            else {
+                document.getElementById("data").innerHTML = 'Player';
+                document.getElementById("admins").style.display = "none";
+                document.getElementById("players").style.display = "inline";
+                
+            }
+
+        }
+        process();
+
+    </script>
+</body>
+
+</html>
